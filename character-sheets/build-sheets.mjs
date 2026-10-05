@@ -39,14 +39,31 @@ const LPC_ROWS = {
 const DEF_NAME = { backslash: "1h_backslash", halfslash: "1h_halfslash" };
 const BASE_ANIMS = ["spellcast", "thrust", "walk", "slash", "shoot", "hurt"];
 
-/** A source frame: LPC animation, view, frame index. `knife` reads the knife sheet. */
+/**
+ * A source frame: LPC animation, view, frame index. Extra options:
+ *   knife: read the knife sheet; pistol/flash: draw a pistol (and muzzle flash)
+ *   dx: shift the whole frame sideways; bob: shift the whole frame up/down
+ *   upper: [dx, dy] shift only the body above the hips (the game's own lean/bob trick)
+ *   layDown: turn a standing frame into a body lying on the ground (KO)
+ *   mirror: flip horizontally (side frames facing left)
+ */
 const f = (anim, view, i, extra = {}) => ({ anim, view, i, ...extra });
 const seq = (anim, view, frames, extra) => frames.map((i) => f(anim, view, i, extra));
+
+/** A run built from the walk cycle: faster, bouncing on the strides, leaning forward. */
+const walkRun = (view, extra = {}) =>
+  [1, 2, 3, 4, 5, 6, 7, 8].map((i) =>
+    f("walk", view, i, { bob: [1, 2, 5, 6].includes(i) ? -1 : 0, upper: view === "S" ? [1, 0] : [0, 0], ...extra }),
+  );
+
+const mirrored = (frames) => frames.map((fr) => ({ ...fr, mirror: true }));
 
 /**
  * Output layout. Each animation lists its frames; `fallback` is used when any of the
  * character's items lacks the LPC animation (the layer would otherwise vanish).
  */
+const STAGGER_SIDE = [[-1, 0], [-2, 1], [-1, 0], [0, 0]];
+
 const LAYOUT = [
   // Row 0: the game's current 20-frame layout, unchanged.
   [
@@ -70,9 +87,9 @@ const LAYOUT = [
   ],
   // Row 2: runs (sprint, flee, chase, jog).
   [
-    { name: "run_front", view: "F", frames: seq("run", "F", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: seq("walk", "F", [1, 2, 3, 4, 5, 6, 7, 8]) },
-    { name: "run_back", view: "B", frames: seq("run", "B", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: seq("walk", "B", [1, 2, 3, 4, 5, 6, 7, 8]) },
-    { name: "run_side", view: "S", frames: seq("run", "S", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: seq("walk", "S", [1, 2, 3, 4, 5, 6, 7, 8]) },
+    { name: "run_front", view: "F", frames: seq("run", "F", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: walkRun("F") },
+    { name: "run_back", view: "B", frames: seq("run", "B", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: walkRun("B") },
+    { name: "run_side", view: "S", frames: seq("run", "S", [0, 1, 2, 3, 4, 5, 6, 7]), fallback: walkRun("S") },
   ],
   // Row 3: side-on fist fighting.
   [
@@ -113,6 +130,26 @@ const LAYOUT = [
     { name: "sit_side", view: "S", frames: [f("sit", "S", 2)], fallback: [f("walk", "S", 0)] },
     { name: "jump_dodge_side", view: "S", frames: seq("jump", "S", [0, 1, 2, 3, 4]), fallback: seq("walk", "S", [0, 2, 3, 4, 0]) },
     { name: "climb", view: "B", frames: seq("climb", "B", [0, 1, 2, 3, 4, 5]), fallback: seq("walk", "B", [1, 2, 3, 4, 5, 6]) },
+  ],
+  // Row 7: hurt, stagger and KO from the back, side and left. LPC only draws these facing the
+  // camera, so they are built from the standing frames: the upper body recoils or sways a pixel
+  // or two above the hips, and KO lays the body flat.
+  [
+    { name: "hurt_back", view: "B", frames: [f("walk", "B", 0, { upper: [0, 1] }), f("walk", "B", 0, { upper: [1, 2] })] },
+    { name: "hurt_side", view: "S", frames: [f("walk", "S", 0, { upper: [-1, 0] }), f("walk", "S", 0, { upper: [-2, 1] })] },
+    { name: "hurt_left", view: "L", frames: mirrored([f("walk", "S", 0, { upper: [-1, 0] }), f("walk", "S", 0, { upper: [-2, 1] })]) },
+    { name: "stagger_back", view: "B", frames: [[-1, 0], [1, 1], [-1, 0], [0, 0]].map((u) => f("walk", "B", 0, { upper: u })) },
+    { name: "stagger_side", view: "S", frames: STAGGER_SIDE.map((u) => f("walk", "S", 0, { upper: u })) },
+    { name: "stagger_left", view: "L", frames: mirrored(STAGGER_SIDE.map((u) => f("walk", "S", 0, { upper: u }))) },
+    { name: "ko_back", view: "B", frames: [f("walk", "B", 0, { layDown: true }), f("walk", "B", 0, { layDown: true })] },
+    { name: "ko_side", view: "S", frames: [f("walk", "S", 0, { layDown: true }), f("walk", "S", 0, { layDown: true })] },
+    { name: "ko_left", view: "L", frames: mirrored([f("walk", "S", 0, { layDown: true }), f("walk", "S", 0, { layDown: true })]) },
+  ],
+  // Row 8: left-facing copies of the side run, walk and idle, for engines that don't flip sprites.
+  [
+    { name: "run_left", view: "L", frames: mirrored(seq("run", "S", [0, 1, 2, 3, 4, 5, 6, 7])), fallback: mirrored(walkRun("S")) },
+    { name: "walk_left", view: "L", frames: mirrored(seq("walk", "S", [1, 2, 3, 4, 5, 6, 7, 8])) },
+    { name: "idle_left", view: "L", frames: mirrored(seq("idle", "S", [0, 1])), fallback: mirrored(seq("walk", "S", [0, 0])) },
   ],
 ];
 
@@ -205,6 +242,51 @@ function downscale(src) {
       out[o + 1] = (best >> 8) & 255;
       out[o + 2] = best & 255;
       out[o + 3] = 255;
+    }
+  }
+  return out;
+}
+
+/** Moves the body above `hip` by (dx, dy), leaving the legs where they are. */
+function shiftUpper(frame, dx, dy, hip) {
+  const out = new Uint8ClampedArray(F * F * 4);
+  out.set(frame.subarray(hip * F * 4), hip * F * 4);
+  for (let y = 0; y < hip; y++) {
+    for (let x = 0; x < F; x++) {
+      const i = (y * F + x) * 4;
+      if (!frame[i + 3]) continue;
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx < 0 || ny < 0 || nx >= F || ny >= F) continue;
+      out.set(frame.subarray(i, i + 4), (ny * F + nx) * 4);
+    }
+  }
+  return out;
+}
+
+/** Turns a standing frame a quarter-turn (head to the left) and lays it on the ground line. */
+function layDown(frame) {
+  const rot = new Uint8ClampedArray(F * F * 4);
+  for (let y = 0; y < F; y++) {
+    for (let x = 0; x < F; x++) {
+      const src = (y * F + x) * 4;
+      // Counter-clockwise: (x, y) -> (y, F - 1 - x)
+      rot.set(frame.subarray(src, src + 4), ((F - 1 - x) * F + y) * 4);
+    }
+  }
+  let x0 = F, x1 = -1;
+  for (let y = 0; y < F; y++) {
+    for (let x = 0; x < F; x++) if (rot[(y * F + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); }
+  }
+  return shifted(rot, Math.round(F / 2 - (x0 + x1 + 1) / 2), FEET_ROW - lowestOpaqueRow(rot));
+}
+
+function mirror(frame) {
+  const out = new Uint8ClampedArray(F * F * 4);
+  for (let y = 0; y < F; y++) {
+    for (let x = 0; x < F; x++) {
+      const s = (y * F + x) * 4;
+      out.set(frame.subarray(s, s + 4), (y * F + (F - 1 - x)) * 4);
     }
   }
   return out;
@@ -309,7 +391,8 @@ const manifest = {
   sideFacing: "right",
   notes: [
     "Row 0 is the original 20-frame layout. Other rows follow the brief's section 5 suggestion.",
-    "Views: F = front (toward camera), B = back, S = side facing right (mirror for left).",
+    "Views: F = front (toward camera), B = back, S = side facing right, L = side facing left (mirrored S).",
+    "Rows 7-8 add hurt/stagger/KO for back, side and left (built from the standing frames: LPC only draws these facing the camera) and explicit left-facing run, walk and idle.",
     "fallbacks: animations drawn with stand-in frames because an item the character wears has no art for that pose.",
     "partial: animations where one worn item has no art for that pose, so that item is missing in those frames.",
   ],
@@ -342,8 +425,11 @@ for (const ch of characters) {
       for (const fr of frames) {
         const src = fr.knife ? knife : base;
         const lpcRow = LPC_ROWS[fr.anim] + (["hurt", "climb"].includes(fr.anim) ? 0 : DIR[fr.view]);
-        let frame = shifted(downscale(sourceFrame(src, lpcRow, fr.i)), fr.dx || 0, offsetY[fr.view]);
+        let frame = shifted(downscale(sourceFrame(src, lpcRow, fr.i)), fr.dx || 0, offsetY[fr.view] + (fr.bob || 0));
+        if (fr.upper) frame = shiftUpper(frame, fr.upper[0], fr.upper[1], fr.view === "S" ? 33 : 32);
+        if (fr.layDown) frame = layDown(frame);
         if (fr.pistol) drawPistol(frame, fr.flash);
+        if (fr.mirror) frame = mirror(frame);
         for (let y = 0; y < F; y++) {
           const d = ((r * F + y) * cols * F + col * F) * 4;
           sheet.set(frame.subarray(y * F * 4, (y + 1) * F * 4), d);

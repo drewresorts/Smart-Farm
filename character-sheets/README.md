@@ -5,7 +5,7 @@
 built from Universal LPC art by the bundled
 [character generator](../character-generator).
 
-- `sheets/<id>.png`: one sheet per character, 25 × 7 frames of 48 × 48.
+- `sheets/<id>.png`: one sheet per character, 25 × 9 frames of 48 × 48.
 - `sheets/manifest.json`: where every animation sits (row, start frame,
   frame count, view), plus each character's archetypes, description and
   LPC selections.
@@ -54,6 +54,8 @@ suggestion:
 | 4 | side weapons: knife slash ×4, knife stab ×4, pistol aim + fire ×4 (muzzle flash on the 3rd), point / "Freeze!" ×2 |
 | 5 | reactions (front): hurt ×2, stagger ×4, knocked down ×4, get up ×4, KO ×2, restrained ×2 |
 | 6 | breathing idles F/B/S ×2, fight stance F ×2, taunt ×2, kneel / search ×2, sit F, sit S, jump / dodge S ×5, climb ×6 |
+| 7 | hurt ×2, stagger ×4 and KO ×2 for back, side and left (front is in row 5) |
+| 8 | left-facing run ×8, walk ×8 and idle ×2 (mirrored side frames, for engines that don't flip) |
 
 The exact positions are in `sheets/manifest.json` under `animations`, for
 example `"punch_jab": { "row": 3, "start": 2, "count": 3, "view": "S" }`.
@@ -65,8 +67,11 @@ character's `fallbacks`:
 
 - Neckties and bow ties have no climbing art, so suits climb using walk
   frames.
-- The black gown and the silk scarf have no fighting art, and the gown has
-  no running art. Those two socialites use walk and slash frames there.
+- The black gown and the silk scarf have no fighting art, so those two
+  socialites use walk and slash frames there.
+- The gown has no running art. Its runs are its walk cycle with a forward
+  lean and a bounce on each stride; the gown hides the legs, so it reads as
+  a run.
 
 Everyone else has every animation.
 
@@ -78,9 +83,13 @@ These items from the brief have no LPC art, so they aren't in the sheets:
   binoculars, fake badge, brass-knuckle glint, carried items (bags,
   briefcase, camera). The pistol on the aim frames is a small sprite drawn
   by the build script.
-- **Missing views:** hurt, stagger and knockdown exist only facing the
-  camera. Front and back views of punches and weapons aren't included; LPC
-  has them, so I can add them if needed.
+- **Missing views:** LPC draws hurt, stagger and knockdown only facing the
+  camera. The back, side and left versions in row 7 are built from the
+  standing frames: the upper body recoils or sways a pixel or two above the
+  hips, the same trick the game uses for its walk bob, and KO lays the body
+  flat. Knockdown and get-up are still front only. Front and back views of
+  punches and weapons aren't included; LPC has them, so I can add them if
+  needed.
 - **Missing poses:** riding a bike, the car break-in and hot-wire, dumpster
   hop, chokehold, zip-tie, pickpocket, bump, change outfit, hide in
   doorway, arrest/cuff, the boss intro and defeat poses, winded (hands on
@@ -93,7 +102,7 @@ These items from the brief have no LPC art, so they aren't in the sheets:
 ## How the looks were chosen
 
 Fixed choices come from the brief: names, roles, outfits ("big bruiser, red
-cap" and so on), and Stretch's brown skin, spiky black hair and smug
+cap" and so on), and Stretch's light skin, spiky black hair and smug
 half-lidded look. Anything the brief leaves open is picked at random with a
 seed of the character id, so it is varied but stable between rebuilds. That
 covers skin tone, hair style and colour, and eye colour.

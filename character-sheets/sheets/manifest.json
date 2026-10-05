@@ -2,12 +2,13 @@
   "frameWidth": 48,
   "frameHeight": 48,
   "columns": 25,
-  "rows": 7,
+  "rows": 9,
   "feetRow": 43,
   "sideFacing": "right",
   "notes": [
     "Row 0 is the original 20-frame layout. Other rows follow the brief's section 5 suggestion.",
-    "Views: F = front (toward camera), B = back, S = side facing right (mirror for left).",
+    "Views: F = front (toward camera), B = back, S = side facing right, L = side facing left (mirrored S).",
+    "Rows 7-8 add hurt/stagger/KO for back, side and left (built from the standing frames: LPC only draws these facing the camera) and explicit left-facing run, walk and idle.",
     "fallbacks: animations drawn with stand-in frames because an item the character wears has no art for that pose.",
     "partial: animations where one worn item has no art for that pose, so that item is missing in those frames."
   ],
@@ -263,6 +264,78 @@
       "start": 19,
       "count": 6,
       "view": "B"
+    },
+    "hurt_back": {
+      "row": 7,
+      "start": 0,
+      "count": 2,
+      "view": "B"
+    },
+    "hurt_side": {
+      "row": 7,
+      "start": 2,
+      "count": 2,
+      "view": "S"
+    },
+    "hurt_left": {
+      "row": 7,
+      "start": 4,
+      "count": 2,
+      "view": "L"
+    },
+    "stagger_back": {
+      "row": 7,
+      "start": 6,
+      "count": 4,
+      "view": "B"
+    },
+    "stagger_side": {
+      "row": 7,
+      "start": 10,
+      "count": 4,
+      "view": "S"
+    },
+    "stagger_left": {
+      "row": 7,
+      "start": 14,
+      "count": 4,
+      "view": "L"
+    },
+    "ko_back": {
+      "row": 7,
+      "start": 18,
+      "count": 2,
+      "view": "B"
+    },
+    "ko_side": {
+      "row": 7,
+      "start": 20,
+      "count": 2,
+      "view": "S"
+    },
+    "ko_left": {
+      "row": 7,
+      "start": 22,
+      "count": 2,
+      "view": "L"
+    },
+    "run_left": {
+      "row": 8,
+      "start": 0,
+      "count": 8,
+      "view": "L"
+    },
+    "walk_left": {
+      "row": 8,
+      "start": 8,
+      "count": 8,
+      "view": "L"
+    },
+    "idle_left": {
+      "row": 8,
+      "start": 16,
+      "count": 2,
+      "view": "L"
     }
   },
   "characters": [
@@ -275,14 +348,14 @@
         "player"
       ],
       "description": "Hoodie: orange zip jacket, dark jeans, white sneakers",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Longsleeve_2_Buttoned_orange",
         "legs": "Long_Pants_all.lpcr.denim",
         "shoes": "Revised_Shoes_white"
@@ -299,14 +372,14 @@
         "player"
       ],
       "description": "Tracksuit: matching red tracksuit with white stripes",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Longsleeve_2_VNeck_red",
         "sleeves": "Longsleeves_2_Overlay_white",
         "legs": "Pants_red",
@@ -324,14 +397,14 @@
         "player"
       ],
       "description": "Courier: yellow courier jacket and black cap",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Longsleeve_2_Buttoned_yellow",
         "hat": "Bonnie_black",
         "legs": "Pants_charcoal",
@@ -349,14 +422,14 @@
         "player"
       ],
       "description": "Night-shift worker: hi-vis vest over a dark long-sleeve, work boots",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Sleeveless_2_VNeck_all.lpcr.lemon",
         "sleeves": "Longsleeves_2_Overlay_charcoal",
         "legs": "Pants_charcoal",
@@ -374,14 +447,14 @@
         "player"
       ],
       "description": "Suit: slick black suit and red tie",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Longsleeve_2_Buttoned_black",
         "neck": "Necktie_red",
         "legs": "Pants_black",
@@ -401,14 +474,14 @@
         "player"
       ],
       "description": "SCPF disguise: navy police uniform, cap and gold epaulets",
-      "skin": "brown",
+      "skin": "light",
       "lpc": {
         "sex": "male",
-        "body": "Body_Color_brown",
-        "head": "Human_Male_brown",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
         "hair": "Spiked2_black",
         "eyes": "Eye_Color_brown",
-        "expression": "Closing_Eyes_brown",
+        "expression": "Closing_Eyes_light",
         "clothes": "Longsleeve_Polo_navy",
         "hat": "Bonnie_navy",
         "shoulders": "Epaulets_metal.gold",
@@ -1203,7 +1276,8 @@
         "sit_front",
         "sit_side",
         "jump_dodge_side",
-        "climb"
+        "climb",
+        "run_left"
       ],
       "partial": []
     },

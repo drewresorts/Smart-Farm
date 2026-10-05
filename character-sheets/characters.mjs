@@ -70,8 +70,8 @@ const c = (id, group, role, archetypes, description, opts) => ({
 });
 
 // ── The player: Stretch ──────────────────────────────────────────────────────
-// Tall, brown skin, spiky black hair, smug. Same face and build in every outfit.
-const STRETCH = { sex: "male", skin: "brown", hair: "Spiked2", hairColour: "black", eyes: "brown", expression: "Closing_Eyes" };
+// Light skin, spiky black hair, smug half-lidded look. Same face and build in every outfit.
+const STRETCH = { sex: "male", skin: "light", hair: "Spiked2", hairColour: "black", eyes: "brown", expression: "Closing_Eyes" };
 const stretch = (id, description, wear) => c(id, "player", "player", ["player"], description, { ...STRETCH, wear });
 
 // ── Shared outfit pieces ─────────────────────────────────────────────────────
