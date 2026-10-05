@@ -1,0 +1,5 @@
+"LPC Modern Car Additions" by blue-moon-bear, edited from the cars in
+"[LPC] Skorpio's SciFi Sprite Pack" by Skorpio; police car based on Baŝto's police car.
+License: CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-modern-car-additions
+File: cars.png (carsskorpiosall_2.png)

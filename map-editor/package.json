@@ -1,0 +1,15 @@
+{
+  "name": "smart-farm-map-editor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser tile map editor for LPC tilesets with Tiled (.tmj) export",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node serve.mjs",
+    "test": "node --test test/map.test.mjs",
+    "downtown": "node tools/downtown.mjs"
+  }
+}

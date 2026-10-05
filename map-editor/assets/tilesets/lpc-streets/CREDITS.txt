@@ -1,0 +1,4 @@
+"[LPC] Streets" by Baŝto, based on "[LPC] Skorpio's SciFi Sprite Pack" by Skorpio
+License: CC-BY-SA 3.0 / GPL 3.0
+https://opengameart.org/content/lpc-streets
+Files: road_markings_yellow.png, road_markings_white.png, street_misc.png
