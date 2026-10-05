@@ -1,7 +1,7 @@
 # Tile art credits
 
-All tiles in `tilesets/` come from the Liberated Pixel Cup project on
-OpenGameArt.org. **You must credit the authors below in any game or map that
+The tiles in `tilesets/` come from the Liberated Pixel Cup project on
+OpenGameArt.org (Ranitaya's pack aside, see below). **You must credit the authors below in any game or map that
 uses these tiles.** Each pack's original credits file is kept next to its
 images as `CREDITS.txt`. The editor also adds a `CREDITS.txt` listing the
 packs a map uses to every export.
@@ -29,6 +29,41 @@ packs a map uses to every export.
 - Source: https://opengameart.org/content/lpc-crops
 - License: CC-BY-SA 3.0+ or GPL 3.0+ (see `tilesets/lpc-crops/CREDITS.txt`
   for per-item details)
+
+## LPC Modern Streets — `tilesets/lpc-modern-streets/`
+
+- "LPC Modern Streets" by Faufilage
+- Source: https://opengameart.org/content/lpc-modern-streets
+- License: CC0 (credit appreciated, not required)
+
+## LPC Streets — `tilesets/lpc-streets/`
+
+- "[LPC] Streets" by Baŝto, based on "[LPC] Skorpio's SciFi Sprite Pack" by Skorpio
+- Source: https://opengameart.org/content/lpc-streets
+- License: CC-BY-SA 3.0 or GPL 3.0
+
+## LPC Victorian Buildings — `tilesets/lpc-victorian/`
+
+- "[LPC] Victorian Buildings" by bluecarrot16, Lanea Zimmerman (Sharm),
+  Casper Nilsson, Lyndsay Takacs (cyanowl) and Redshrike
+- Source: https://opengameart.org/content/lpc-victorian-buildings
+- License: CC-BY-SA 3.0 or GPL 3.0 (see `tilesets/lpc-victorian/CREDITS.txt`)
+
+## LPC Modern Cars — `tilesets/lpc-cars/`
+
+- "LPC Modern Car Additions" by blue-moon-bear, edited from the cars in
+  "[LPC] Skorpio's SciFi Sprite Pack" by Skorpio; police car based on Baŝto's
+- Source: https://opengameart.org/content/lpc-modern-car-additions
+- License: CC-BY-SA 3.0 or GPL 3.0
+- `cars_small.png` is a half-size version made by `tools/make-small-cars.mjs`
+  (same license).
+
+## Ranitaya's City Essential Assets — `tilesets/ranitaya/` (not included)
+
+- By Ranitaya Studios: https://ranitaya-studios.itch.io/ranitayas-city-essential
+- Royalty-free for personal and commercial projects, but not openly licensed
+  for redistribution. It is not in this repository; import your own copy with
+  `tools/import-ranitaya.mjs`. Keep it out of public repositories.
 
 ## Releasing on DRM-protected stores
 

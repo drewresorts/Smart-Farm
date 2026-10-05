@@ -3,7 +3,7 @@
 
 import { TILE, terrainById, tilesetById, PACKS } from "./catalog.js";
 
-export const TILE_LAYERS = ["detail", "objects", "above"];
+export const TILE_LAYERS = ["detail", "objects", "decor", "above"];
 export const LAYERS = ["terrain", ...TILE_LAYERS, "collision"];
 
 export function createMap(width, height, base = "grass") {

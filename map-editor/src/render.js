@@ -59,6 +59,10 @@ function drawTerrain(ctx, sheets, terrainId, x, y, same) {
   const t = terrainById[terrainId];
   const img = t && sheets[t.sheet];
   if (!img) return;
+  if (t.fill) {
+    ctx.drawImage(img, t.fill[0] * TILE, t.fill[1] * TILE, TILE, TILE, x * TILE, y * TILE, TILE, TILE);
+    return;
+  }
   for (const [sx, sy, dx, dy, size] of terrainCellParts(x, y, same, t.variants)) {
     ctx.drawImage(img, sx, sy, size, size, x * TILE + dx, y * TILE + dy, size, size);
   }

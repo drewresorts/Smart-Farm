@@ -12,6 +12,7 @@ const LAYER_INFO = [
   { id: "terrain", name: "Terrain" },
   { id: "detail", name: "Detail" },
   { id: "objects", name: "Objects" },
+  { id: "decor", name: "Decor (on objects)" },
   { id: "above", name: "Above characters" },
   { id: "collision", name: "Collision" },
 ];
@@ -125,7 +126,6 @@ function buildUi() {
     scheduleSave();
   };
 
-  $("tileset-select").innerHTML = TILESETS.map((t) => `<option value="${t.id}">${t.name}</option>`).join("");
   $("tileset-select").onchange = () => drawSheet();
 
   $("show-grid").onchange = draw;
@@ -197,6 +197,8 @@ function renderLayerList() {
 }
 
 function buildPalettes() {
+  // Sheets that failed to load (e.g. an optional pack that hasn't been imported) are left out.
+  $("tileset-select").innerHTML = TILESETS.filter((t) => state.sheets[t.id]).map((t) => `<option value="${t.id}">${t.name}</option>`).join("");
   $("terrain-grid").innerHTML = "";
   for (const t of TERRAINS) {
     const b = document.createElement("button");
@@ -205,7 +207,8 @@ function buildPalettes() {
     const c = document.createElement("canvas");
     c.width = c.height = TILE;
     const img = state.sheets[t.sheet];
-    if (img) c.getContext("2d").drawImage(img, TILE, 3 * TILE, TILE, TILE, 0, 0, TILE, TILE);
+    const [pc, pr] = t.fill ?? [1, 3];
+    if (img) c.getContext("2d").drawImage(img, pc * TILE, pr * TILE, TILE, TILE, 0, 0, TILE, TILE);
     b.append(c, document.createTextNode(t.name));
     b.onclick = () => selectTerrain(t.id);
     $("terrain-grid").append(b);
@@ -616,7 +619,7 @@ function onKeyDown(e) {
   if (e.code === "Space") { state.spaceDown = true; e.preventDefault(); return; }
   const tools = { b: "brush", r: "rect", g: "fill", e: "erase", i: "pick" };
   if (tools[e.key]) return selectTool(tools[e.key]);
-  if (/^[1-5]$/.test(e.key)) return selectLayer(LAYER_INFO[Number(e.key) - 1].id);
+  if (/^[1-6]$/.test(e.key)) return selectLayer(LAYER_INFO[Number(e.key) - 1].id);
   if (e.key === "+" || e.key === "=") return zoomAt(state.zoom * 1.25);
   if (e.key === "-") return zoomAt(state.zoom / 1.25);
   if (e.key === "0") return fitView();

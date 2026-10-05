@@ -7,6 +7,8 @@ import {
   toProject, fromProject, importAiTmj, buildTmj, creditsText,
 } from "../src/map.js";
 import { crc32, makeZip } from "../src/zip.js";
+import { generateDistrict, DISTRICT_IDS, ranitayaIndex } from "../tools/downtown.mjs";
+import { tilesetById, terrainById } from "../src/catalog.js";
 
 const corner = (name) => CORNERS.find((c) => c.name === name);
 
@@ -120,4 +122,19 @@ test("zip output has valid CRCs and an end-of-central-directory record", async (
   assert.equal(view.getUint32(0, true), 0x04034b50);
   assert.equal(view.getUint32(bytes.length - 22, true), 0x06054b50);
   assert.equal(view.getUint32(14, true), 0x3610a686);
+});
+
+test("downtown districts are deterministic and only use known tile sheets", () => {
+  // The Ranitaya style needs the (not redistributed) pack, so it's only checked once imported.
+  const styles = ranitayaIndex() ? ["victorian", "ranitaya"] : ["victorian"];
+  for (const style of styles) for (const id of DISTRICT_IDS) {
+    const a = generateDistrict(id, { style });
+    const b = generateDistrict(id, { style });
+    assert.deepEqual(a, b, `${id} should be the same every run`);
+    assert.ok(terrainById[a.base], `${id} base terrain exists`);
+    const refs = Object.values(a.layers).flat().filter(Boolean);
+    assert.ok(refs.length > 1000, `${id} has content`);
+    for (const ref of refs) assert.ok(tilesetById[ref.slice(0, ref.lastIndexOf("#"))], `${id}: unknown sheet in ${ref}`);
+    assert.ok(a.collision.some(Boolean), `${id} has collision`);
+  }
 });
