@@ -1,0 +1,5 @@
+node_modules/
+# Intermediate 64px LPC exports (rebuild with `npm run export`)
+lpc/
+# Per-animation PNG/SVG output (rebuild with `npm run sequences`)
+sequences/

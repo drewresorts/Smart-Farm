@@ -1,0 +1,1442 @@
+{
+  "frameWidth": 48,
+  "frameHeight": 48,
+  "columns": 25,
+  "rows": 9,
+  "feetRow": 43,
+  "sideFacing": "right",
+  "notes": [
+    "Row 0 is the original 20-frame layout. Other rows follow the brief's section 5 suggestion.",
+    "Views: F = front (toward camera), B = back, S = side facing right, L = side facing left (mirrored S).",
+    "Rows 7-8 add hurt/stagger/KO for back, side and left (built from the standing frames: LPC only draws these facing the camera) and explicit left-facing run, walk and idle.",
+    "fallbacks: animations drawn with stand-in frames because an item the character wears has no art for that pose.",
+    "partial: animations where one worn item has no art for that pose, so that item is missing in those frames."
+  ],
+  "animations": {
+    "idle_front_legacy": {
+      "row": 0,
+      "start": 0,
+      "count": 1,
+      "view": "F"
+    },
+    "walk_front_legacy": {
+      "row": 0,
+      "start": 1,
+      "count": 4,
+      "view": "F"
+    },
+    "idle_back_legacy": {
+      "row": 0,
+      "start": 5,
+      "count": 1,
+      "view": "B"
+    },
+    "walk_back_legacy": {
+      "row": 0,
+      "start": 6,
+      "count": 4,
+      "view": "B"
+    },
+    "idle_side_legacy": {
+      "row": 0,
+      "start": 10,
+      "count": 1,
+      "view": "S"
+    },
+    "walk_side_legacy": {
+      "row": 0,
+      "start": 11,
+      "count": 4,
+      "view": "S"
+    },
+    "hands_up": {
+      "row": 0,
+      "start": 15,
+      "count": 1,
+      "view": "F"
+    },
+    "cower": {
+      "row": 0,
+      "start": 16,
+      "count": 1,
+      "view": "F"
+    },
+    "punch_legacy": {
+      "row": 0,
+      "start": 17,
+      "count": 1,
+      "view": "S"
+    },
+    "hurt_legacy": {
+      "row": 0,
+      "start": 18,
+      "count": 1,
+      "view": "F"
+    },
+    "ko_legacy": {
+      "row": 0,
+      "start": 19,
+      "count": 1,
+      "view": "F"
+    },
+    "walk_front": {
+      "row": 1,
+      "start": 0,
+      "count": 8,
+      "view": "F"
+    },
+    "walk_back": {
+      "row": 1,
+      "start": 8,
+      "count": 8,
+      "view": "B"
+    },
+    "walk_side": {
+      "row": 1,
+      "start": 16,
+      "count": 8,
+      "view": "S"
+    },
+    "run_front": {
+      "row": 2,
+      "start": 0,
+      "count": 8,
+      "view": "F"
+    },
+    "run_back": {
+      "row": 2,
+      "start": 8,
+      "count": 8,
+      "view": "B"
+    },
+    "run_side": {
+      "row": 2,
+      "start": 16,
+      "count": 8,
+      "view": "S"
+    },
+    "fight_stance_side": {
+      "row": 3,
+      "start": 0,
+      "count": 2,
+      "view": "S"
+    },
+    "punch_jab": {
+      "row": 3,
+      "start": 2,
+      "count": 3,
+      "view": "S"
+    },
+    "punch_cross": {
+      "row": 3,
+      "start": 5,
+      "count": 3,
+      "view": "S"
+    },
+    "punch_finisher": {
+      "row": 3,
+      "start": 8,
+      "count": 4,
+      "view": "S"
+    },
+    "lunge": {
+      "row": 3,
+      "start": 12,
+      "count": 2,
+      "view": "S"
+    },
+    "knife_slash": {
+      "row": 4,
+      "start": 0,
+      "count": 4,
+      "view": "S"
+    },
+    "knife_stab": {
+      "row": 4,
+      "start": 4,
+      "count": 4,
+      "view": "S"
+    },
+    "pistol_aim_fire": {
+      "row": 4,
+      "start": 8,
+      "count": 4,
+      "view": "S"
+    },
+    "point_freeze": {
+      "row": 4,
+      "start": 12,
+      "count": 2,
+      "view": "S"
+    },
+    "hurt_front": {
+      "row": 5,
+      "start": 0,
+      "count": 2,
+      "view": "F"
+    },
+    "stagger_front": {
+      "row": 5,
+      "start": 2,
+      "count": 4,
+      "view": "F"
+    },
+    "knockdown_front": {
+      "row": 5,
+      "start": 6,
+      "count": 4,
+      "view": "F"
+    },
+    "get_up_front": {
+      "row": 5,
+      "start": 10,
+      "count": 4,
+      "view": "F"
+    },
+    "ko_front": {
+      "row": 5,
+      "start": 14,
+      "count": 2,
+      "view": "F"
+    },
+    "restrained": {
+      "row": 5,
+      "start": 16,
+      "count": 2,
+      "view": "F"
+    },
+    "idle_front": {
+      "row": 6,
+      "start": 0,
+      "count": 2,
+      "view": "F"
+    },
+    "idle_back": {
+      "row": 6,
+      "start": 2,
+      "count": 2,
+      "view": "B"
+    },
+    "idle_side": {
+      "row": 6,
+      "start": 4,
+      "count": 2,
+      "view": "S"
+    },
+    "fight_stance_front": {
+      "row": 6,
+      "start": 6,
+      "count": 2,
+      "view": "F"
+    },
+    "taunt": {
+      "row": 6,
+      "start": 8,
+      "count": 2,
+      "view": "F"
+    },
+    "kneel_search": {
+      "row": 6,
+      "start": 10,
+      "count": 2,
+      "view": "F"
+    },
+    "sit_front": {
+      "row": 6,
+      "start": 12,
+      "count": 1,
+      "view": "F"
+    },
+    "sit_side": {
+      "row": 6,
+      "start": 13,
+      "count": 1,
+      "view": "S"
+    },
+    "jump_dodge_side": {
+      "row": 6,
+      "start": 14,
+      "count": 5,
+      "view": "S"
+    },
+    "climb": {
+      "row": 6,
+      "start": 19,
+      "count": 6,
+      "view": "B"
+    },
+    "hurt_back": {
+      "row": 7,
+      "start": 0,
+      "count": 2,
+      "view": "B"
+    },
+    "hurt_side": {
+      "row": 7,
+      "start": 2,
+      "count": 2,
+      "view": "S"
+    },
+    "hurt_left": {
+      "row": 7,
+      "start": 4,
+      "count": 2,
+      "view": "L"
+    },
+    "stagger_back": {
+      "row": 7,
+      "start": 6,
+      "count": 4,
+      "view": "B"
+    },
+    "stagger_side": {
+      "row": 7,
+      "start": 10,
+      "count": 4,
+      "view": "S"
+    },
+    "stagger_left": {
+      "row": 7,
+      "start": 14,
+      "count": 4,
+      "view": "L"
+    },
+    "ko_back": {
+      "row": 7,
+      "start": 18,
+      "count": 2,
+      "view": "B"
+    },
+    "ko_side": {
+      "row": 7,
+      "start": 20,
+      "count": 2,
+      "view": "S"
+    },
+    "ko_left": {
+      "row": 7,
+      "start": 22,
+      "count": 2,
+      "view": "L"
+    },
+    "run_left": {
+      "row": 8,
+      "start": 0,
+      "count": 8,
+      "view": "L"
+    },
+    "walk_left": {
+      "row": 8,
+      "start": 8,
+      "count": 8,
+      "view": "L"
+    },
+    "idle_left": {
+      "row": 8,
+      "start": 16,
+      "count": 2,
+      "view": "L"
+    }
+  },
+  "characters": [
+    {
+      "id": "stretch",
+      "file": "stretch.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "Hoodie: orange zip jacket, dark jeans, white sneakers",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Longsleeve_2_Buttoned_orange",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "stretch_track",
+      "file": "stretch_track.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "Tracksuit: matching red tracksuit with white stripes",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Longsleeve_2_VNeck_red",
+        "sleeves": "Longsleeves_2_Overlay_white",
+        "legs": "Pants_red",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "stretch_courier",
+      "file": "stretch_courier.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "Courier: yellow courier jacket and black cap",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Longsleeve_2_Buttoned_yellow",
+        "hat": "Bonnie_black",
+        "legs": "Pants_charcoal",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "stretch_worker",
+      "file": "stretch_worker.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "Night-shift worker: hi-vis vest over a dark long-sleeve, work boots",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Sleeveless_2_VNeck_all.lpcr.lemon",
+        "sleeves": "Longsleeves_2_Overlay_charcoal",
+        "legs": "Pants_charcoal",
+        "shoes": "Basic_Boots_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "stretch_suit",
+      "file": "stretch_suit.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "Suit: slick black suit and red tie",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "neck": "Necktie_red",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "stretch_scpf",
+      "file": "stretch_scpf.png",
+      "group": "player",
+      "role": "player",
+      "archetypes": [
+        "player"
+      ],
+      "description": "SCPF disguise: navy police uniform, cap and gold epaulets",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "Spiked2_black",
+        "eyes": "Eye_Color_brown",
+        "expression": "Closing_Eyes_light",
+        "clothes": "Longsleeve_Polo_navy",
+        "hat": "Bonnie_navy",
+        "shoulders": "Epaulets_metal.gold",
+        "legs": "Pants_navy",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "lt_rourke",
+      "file": "lt_rourke.png",
+      "group": "boss",
+      "role": "gang",
+      "archetypes": [
+        "lieutenant"
+      ],
+      "description": "\"Knuckles\" Rourke: big bruiser, red cap, brass knuckles",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_Plump_light",
+        "hair": "Buzzcut_ginger",
+        "eyes": "Eye_Color_green",
+        "expression": "Angry_light",
+        "hat": "Bonnie_red",
+        "clothes": "Sleeveless_2_VNeck_black",
+        "gloves": "Gloves_brass",
+        "beard": "Trimmed_Beard_ginger",
+        "legs": "Pants_charcoal",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "lt_marchetti",
+      "file": "lt_marchetti.png",
+      "group": "boss",
+      "role": "gang",
+      "archetypes": [
+        "lieutenant"
+      ],
+      "description": "Vee Marchetti: elegant and dangerous, sleek all-black pantsuit, shades",
+      "skin": "olive",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_olive",
+        "head": "Human_Female_olive",
+        "hair": "Long_straight_raven",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Scoop_black",
+        "legs": "Pants_black",
+        "facial_eyes": "Shades_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "lt_hallorann",
+      "file": "lt_hallorann.png",
+      "group": "boss",
+      "role": "gang",
+      "archetypes": [
+        "lieutenant"
+      ],
+      "description": "\"Doc\" Hallorann: gaunt warehouse chemist in a pale lab coat and glasses",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_Gaunt_light",
+        "hair": "Balding_gray",
+        "eyes": "Eye_Color_green",
+        "clothes": "Longsleeve_2_Buttoned_white",
+        "legs": "Pants_gray",
+        "facial_eyes": "Round_Glasses_silver",
+        "shoes": "Revised_Shoes_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "lt_crane",
+      "file": "lt_crane.png",
+      "group": "boss",
+      "role": "gang",
+      "archetypes": [
+        "lieutenant"
+      ],
+      "description": "Silas Crane: the final boss. Tuxedo, silver hair, silver beard",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_Elderly_light",
+        "hair": "Parted_platinum",
+        "eyes": "Eye_Color_brown",
+        "expression": "Angry_light",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "neck": "Bowtie_black",
+        "beard": "Trimmed_Beard_platinum",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "turtleneck",
+      "file": "turtleneck.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local",
+        "corner_dealer"
+      ],
+      "description": "Charcoal turtleneck, dark trousers",
+      "skin": "light",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_light",
+        "head": "Human_Male_light",
+        "hair": "High_and_tight_chestnut",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_charcoal",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "blackfit",
+      "file": "blackfit.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local",
+        "crane_thug"
+      ],
+      "description": "All-black streetwear",
+      "skin": "brown",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_brown",
+        "head": "Human_Male_brown",
+        "hair": "Cornrows_dark_gray",
+        "eyes": "Eye_Color_brown",
+        "clothes": "TShirt_black",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "dark_layers",
+      "file": "dark_layers.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local",
+        "crane_thug",
+        "corner_dealer"
+      ],
+      "description": "Dark layered cardigan with the hood up",
+      "skin": "bronze",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_bronze",
+        "head": "Human_Male_bronze",
+        "hair": "Twists_fade_black",
+        "eyes": "Eye_Color_gray",
+        "clothes": "Cardigan_charcoal",
+        "hat": "Hood_gray",
+        "legs": "Pants_black",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "mono_fit",
+      "file": "mono_fit.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local",
+        "socialite"
+      ],
+      "description": "Monochrome cream outfit",
+      "skin": "taupe",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_taupe",
+        "head": "Human_Female_taupe",
+        "hair": "High_ponytail_dark_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Scoop_white",
+        "legs": "Pants_white",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "local_teal",
+      "file": "local_teal.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local"
+      ],
+      "description": "Teal T-shirt, jeans",
+      "skin": "black",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "hair": "Twists_fade_sandy",
+        "eyes": "Eye_Color_brown",
+        "clothes": "TShirt_teal",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "shoes": "Basic_Shoes_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "local_maroon",
+      "file": "local_maroon.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "local"
+      ],
+      "description": "Maroon long-sleeve, khakis",
+      "skin": "taupe",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_taupe",
+        "head": "Human_Female_taupe",
+        "hair": "Braid_sandy",
+        "eyes": "Eye_Color_blue",
+        "clothes": "Longsleeve_maroon",
+        "legs": "Pants_tan",
+        "shoes": "Basic_Shoes_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "street_blue",
+      "file": "street_blue.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "student",
+        "jogger"
+      ],
+      "description": "Blue streetwear, sneakers",
+      "skin": "black",
+      "lpc": {
+        "sex": "teen",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "hair": "Bedhead_dark_gray",
+        "eyes": "Eye_Color_green",
+        "clothes": "Longsleeve_2_blue",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "tracksuit_lime",
+      "file": "tracksuit_lime.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "student",
+        "jogger"
+      ],
+      "description": "Lime tracksuit",
+      "skin": "black",
+      "lpc": {
+        "sex": "teen",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "hair": "Swoop_sandy",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_VNeck_all.lpcr.apple",
+        "legs": "Pants_all.lpcr.apple",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "jacket_yellow",
+      "file": "jacket_yellow.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "student",
+        "tourist"
+      ],
+      "description": "Yellow jacket, jeans",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_amber",
+        "hair": "High_and_tight_black",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_yellow",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "student_purple",
+      "file": "student_purple.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "student"
+      ],
+      "description": "Purple sweater, glasses",
+      "skin": "black",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_black",
+        "head": "Human_Female_black",
+        "hair": "Ponytail_dark_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_purple",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "facial_eyes": "Nerd_Glasses_black",
+        "shoes": "Revised_Shoes_white"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "tourist_pink",
+      "file": "tourist_pink.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "tourist",
+        "jogger"
+      ],
+      "description": "Pink polo, white shorts, sunglasses",
+      "skin": "bronze",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_bronze",
+        "head": "Human_Female_bronze",
+        "hair": "Ponytail_black",
+        "eyes": "Eye_Color_green",
+        "clothes": "Shortsleeve_Polo_pink",
+        "legs": "Shorts_white",
+        "facial_eyes": "Sunglasses_black",
+        "shoes": "Sandals_tan"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "tourist_teal",
+      "file": "tourist_teal.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "tourist"
+      ],
+      "description": "Teal polo, khaki shorts, sunglasses",
+      "skin": "black",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_black",
+        "head": "Human_Male_Plump_black",
+        "hair": "Natural_chestnut",
+        "eyes": "Eye_Color_gray",
+        "clothes": "Shortsleeve_Polo_teal",
+        "legs": "Shorts_tan",
+        "facial_eyes": "Sunglasses_black",
+        "shoes": "Sandals_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "worker_hivis",
+      "file": "worker_hivis.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "worker"
+      ],
+      "description": "Yellow hi-vis vest, work boots",
+      "skin": "black",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "hair": "Buzzcut_dark_brown",
+        "eyes": "Eye_Color_blue",
+        "clothes": "Sleeveless_2_VNeck_all.lpcr.lemon",
+        "sleeves": "Longsleeves_2_Overlay_gray",
+        "legs": "Pants_charcoal",
+        "shoes": "Basic_Boots_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "worker_orange",
+      "file": "worker_orange.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "worker"
+      ],
+      "description": "Orange hi-vis vest, dark bandana",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_amber",
+        "hair": "Twists_fade_blonde",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Sleeveless_2_VNeck_orange",
+        "sleeves": "Longsleeves_2_Overlay_navy",
+        "bandana": "Bandana_charcoal",
+        "legs": "Pants_navy",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "worker_overalls",
+      "file": "worker_overalls.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "worker"
+      ],
+      "description": "Work overalls, beard",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_amber",
+        "hair": "Parted_dark_gray",
+        "eyes": "Eye_Color_green",
+        "clothes": "Longsleeve_gray",
+        "overalls": "Overalls_navy",
+        "beard": "Basic_Beard_dark_brown",
+        "shoes": "Basic_Boots_brown"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "suit_slick",
+      "file": "suit_slick.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Slick black suit, swept-back hair",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_amber",
+        "hair": "Swoop_black",
+        "eyes": "Eye_Color_green",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "neck": "Necktie_charcoal",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_pale",
+      "file": "suit_pale.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Pale cream suit",
+      "skin": "brown",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_brown",
+        "head": "Human_Male_brown",
+        "hair": "Natural_ginger",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_white",
+        "neck": "Necktie_tan",
+        "legs": "Pants_white",
+        "shoes": "Revised_Shoes_brown"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_classic",
+      "file": "suit_classic.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Classic navy suit, red tie",
+      "skin": "brown",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_brown",
+        "head": "Human_Male_brown",
+        "hair": "Natural_light_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_navy",
+        "neck": "Necktie_red",
+        "legs": "Pants_navy",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_tux",
+      "file": "suit_tux.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Black tuxedo, bow tie",
+      "skin": "olive",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_olive",
+        "head": "Human_Male_olive",
+        "hair": "High_and_tight_dark_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "neck": "Bowtie_black",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "tux_dark",
+      "file": "tux_dark.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Charcoal tuxedo, bow tie, female",
+      "skin": "brown",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_brown",
+        "head": "Human_Female_brown",
+        "hair": "Bangs_bun_ginger",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_charcoal",
+        "neck": "Bowtie_2_black",
+        "legs": "Pants_charcoal",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_sharp",
+      "file": "suit_sharp.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit",
+        "socialite"
+      ],
+      "description": "Sharp black suit, shades",
+      "skin": "brown",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_brown",
+        "head": "Human_Female_brown",
+        "hair": "Bob_chestnut",
+        "eyes": "Eye_Color_gray",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "legs": "Pants_black",
+        "facial_eyes": "Shades_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "suit_navy",
+      "file": "suit_navy.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Navy suit, blue tie",
+      "skin": "taupe",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_taupe",
+        "head": "Human_Female_taupe",
+        "hair": "Curly_long_dark_brown",
+        "eyes": "Eye_Color_blue",
+        "clothes": "Longsleeve_2_Buttoned_navy",
+        "neck": "Necktie_sky",
+        "legs": "Pants_navy",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_grey",
+      "file": "suit_grey.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Grey suit, glasses",
+      "skin": "taupe",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_taupe",
+        "head": "Human_Male_Elderly_taupe",
+        "hair": "Curly_short_gray",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_gray",
+        "neck": "Necktie_navy",
+        "legs": "Pants_gray",
+        "facial_eyes": "Glasses_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_black",
+      "file": "suit_black.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Black suit, white shirt look",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_amber",
+        "hair": "Twists_fade_dark_gray",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_black",
+        "neck": "Necktie_white",
+        "legs": "Pants_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_brown",
+      "file": "suit_brown.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Brown suit, mustache",
+      "skin": "amber",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_amber",
+        "head": "Human_Male_Plump_amber",
+        "hair": "Buzzcut_light_brown",
+        "eyes": "Eye_Color_green",
+        "clothes": "Longsleeve_2_Buttoned_brown",
+        "neck": "Necktie_tan",
+        "legs": "Pants_brown",
+        "mustache": "Mustache_dark_brown",
+        "shoes": "Revised_Shoes_brown"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_bald",
+      "file": "suit_bald.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "office_suit"
+      ],
+      "description": "Charcoal suit, bald",
+      "skin": "black",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_Buttoned_charcoal",
+        "neck": "Necktie_maroon",
+        "legs": "Pants_charcoal",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "gown_black",
+      "file": "gown_black.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "socialite"
+      ],
+      "description": "Black evening gown",
+      "skin": "brown",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_brown",
+        "head": "Human_Female_brown",
+        "hair": "Long_straight_blonde",
+        "eyes": "Eye_Color_brown",
+        "dress": "Sash_dress_black",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [
+        "punch_legacy",
+        "run_front",
+        "run_back",
+        "run_side",
+        "fight_stance_side",
+        "punch_jab",
+        "punch_finisher",
+        "lunge",
+        "fight_stance_front",
+        "taunt",
+        "kneel_search",
+        "sit_front",
+        "sit_side",
+        "jump_dodge_side",
+        "climb",
+        "run_left"
+      ],
+      "partial": []
+    },
+    {
+      "id": "suit_scarf",
+      "file": "suit_scarf.png",
+      "group": "npc",
+      "role": "civilian",
+      "archetypes": [
+        "socialite"
+      ],
+      "description": "Camel suit with a silk scarf",
+      "skin": "light",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_light",
+        "head": "Human_Female_light",
+        "hair": "Wavy_ginger",
+        "eyes": "Eye_Color_gray",
+        "clothes": "Longsleeve_2_Buttoned_tan",
+        "neck": "Scarf_rose",
+        "legs": "Pants_tan",
+        "shoes": "Revised_Shoes_brown"
+      },
+      "fallbacks": [
+        "punch_legacy",
+        "fight_stance_side",
+        "punch_jab",
+        "punch_finisher",
+        "lunge",
+        "fight_stance_front",
+        "climb"
+      ],
+      "partial": []
+    },
+    {
+      "id": "jacket_red_cap",
+      "file": "jacket_red_cap.png",
+      "group": "npc",
+      "role": "gang",
+      "archetypes": [
+        "crane_thug"
+      ],
+      "description": "Red jacket, red cap",
+      "skin": "brown",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_brown",
+        "head": "Human_Male_brown",
+        "hair": "Plain_raven",
+        "eyes": "Eye_Color_gray",
+        "clothes": "Longsleeve_2_Buttoned_red",
+        "hat": "Bonnie_red",
+        "legs": "Long_Pants_all.lpcr.denim",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "techwear",
+      "file": "techwear.png",
+      "group": "npc",
+      "role": "gang",
+      "archetypes": [
+        "crane_thug",
+        "corner_dealer"
+      ],
+      "description": "Black techwear, shades, bandana",
+      "skin": "black",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_black",
+        "head": "Human_Male_black",
+        "hair": "Afro_light_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_2_charcoal",
+        "bandana": "Bandana_black",
+        "facial_eyes": "Sunglasses_black",
+        "legs": "Pants_black",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "cop_a",
+      "file": "cop_a.png",
+      "group": "npc",
+      "role": "cop",
+      "archetypes": [
+        "scpf_officer"
+      ],
+      "description": "Officer: navy uniform, cap, epaulets",
+      "skin": "taupe",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_taupe",
+        "head": "Human_Male_taupe",
+        "hair": "Messy1_sandy",
+        "eyes": "Eye_Color_blue",
+        "clothes": "Longsleeve_Polo_navy",
+        "hat": "Bonnie_navy",
+        "shoulders": "Epaulets_metal.gold",
+        "legs": "Pants_navy",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "cop_b",
+      "file": "cop_b.png",
+      "group": "npc",
+      "role": "cop",
+      "archetypes": [
+        "scpf_officer"
+      ],
+      "description": "Officer: short-sleeve uniform, ponytail",
+      "skin": "brown",
+      "lpc": {
+        "sex": "female",
+        "body": "Body_Color_brown",
+        "head": "Human_Female_brown",
+        "hair": "Ponytail_dark_brown",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Shortsleeve_Polo_navy",
+        "shoulders": "Epaulets_metal.silver",
+        "legs": "Pants_navy",
+        "shoes": "Revised_Shoes_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    },
+    {
+      "id": "cop_c",
+      "file": "cop_c.png",
+      "group": "npc",
+      "role": "cop",
+      "archetypes": [
+        "scpf_officer"
+      ],
+      "description": "Sergeant: heavier build, mustache, cap",
+      "skin": "olive",
+      "lpc": {
+        "sex": "male",
+        "body": "Body_Color_olive",
+        "head": "Human_Male_Plump_olive",
+        "hair": "Dreadlocks_short_raven",
+        "eyes": "Eye_Color_brown",
+        "clothes": "Longsleeve_Polo_bluegray",
+        "hat": "Bonnie_navy",
+        "shoulders": "Epaulets_metal.gold",
+        "mustache": "Mustache_dark_gray",
+        "legs": "Pants_navy",
+        "shoes": "Basic_Boots_black"
+      },
+      "fallbacks": [],
+      "partial": []
+    }
+  ]
+}

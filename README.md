@@ -50,3 +50,11 @@ rsync -a --delete --exclude .git --exclude node_modules --exclude dist /tmp/lpc/
 ```
 
 Then review the diff, commit, and update the commit hash above.
+
+## Game character sheets
+
+[`character-sheets/`](character-sheets/) holds 48×48 sprite sheets for the
+game's whole cast: Stretch's 6 outfits, 4 lieutenants and 33 NPC looks. They
+come with an animation manifest, art credits and a preview viewer, and are
+built from LPC art with the character generator. See its
+[README](character-sheets/README.md).
