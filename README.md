@@ -6,6 +6,15 @@
   [Universal LPC Spritesheet Character Generator](https://github.com/LiberatedPixelCup/Universal-LPC-Spritesheet-Character-Generator).
   It is a standalone web app for building layered 64×64 pixel-art character
   spritesheets, usable for any project.
+- [`map-editor/`](map-editor/) — a browser tile map editor using LPC
+  tilesets (farm, terrain, buildings). It exports Tiled `.tmj` maps.
+  Run it with `cd map-editor && npm start`. See its
+  [README](map-editor/README.md).
+- [`map-generator/`](map-generator/) — an AI map generator that turns a text
+  description into a pixel-art map with collision data. It is the map pipeline
+  from [OpenPixel-RPG](https://github.com/tensor2023/OpenPixel-RPG) and needs
+  your own AI API keys. Its maps open in the map editor via **Import AI map**.
+  See its [README](map-generator/README.md).
 
 ### Running the character generator
 

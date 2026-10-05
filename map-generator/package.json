@@ -1,0 +1,20 @@
+{
+  "name": "smart-farm-map-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI pixel-art map generator (map pipeline from OpenPixel-RPG / GeoPixel) that outputs Tiled .tmj maps",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate": "node generate.mjs",
+    "from-image": "node generators/map/src/index-from-image.mjs --image",
+    "test": "node test/offline-pipeline.test.mjs"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "sharp": "^0.33.5"
+  }
+}

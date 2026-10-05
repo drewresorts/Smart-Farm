@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LPC Map Editor</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <strong class="brand">LPC Map Editor</strong>
+    <div class="group">
+      <button id="btn-new" title="New map">New</button>
+      <button id="btn-open" title="Open a project file (.json)">Open</button>
+      <button id="btn-save" title="Save project file (Ctrl+S)">Save</button>
+      <button id="btn-import" title="Import a map from the AI map generator (.tmj + background .png)">Import AI map</button>
+    </div>
+    <div class="group">
+      <button id="btn-export" class="primary" title="Download a .zip with a Tiled map, images and credits">Export Tiled</button>
+      <button id="btn-png" title="Download the whole map as one image">Export PNG</button>
+    </div>
+    <div class="group">
+      <button id="btn-undo" title="Undo (Ctrl+Z)">Undo</button>
+      <button id="btn-redo" title="Redo (Ctrl+Y)">Redo</button>
+    </div>
+    <div class="group">
+      <button id="btn-zoom-out" title="Zoom out (-)">−</button>
+      <span id="zoom-label">100%</span>
+      <button id="btn-zoom-in" title="Zoom in (+)">+</button>
+      <button id="btn-fit" title="Fit map to window (0)">Fit</button>
+    </div>
+  </header>
+
+  <aside class="sidebar">
+    <section>
+      <h2>Tools</h2>
+      <div class="tools" id="tools">
+        <button data-tool="brush" title="Brush (B)">Brush</button>
+        <button data-tool="rect" title="Rectangle (R)">Rectangle</button>
+        <button data-tool="fill" title="Fill (G)">Fill</button>
+        <button data-tool="erase" title="Eraser (E)">Eraser</button>
+        <button data-tool="pick" title="Pick tile from map (I)">Picker</button>
+      </div>
+      <p class="hint">Right-click erases. Drag with the middle button or hold Space to pan. Scroll to zoom.</p>
+    </section>
+
+    <section>
+      <h2>Layers</h2>
+      <ul class="layers" id="layers"></ul>
+    </section>
+
+    <section class="palette-section">
+      <div class="tabs">
+        <button data-tab="terrain" class="tab">Terrain</button>
+        <button data-tab="tiles" class="tab">Tiles</button>
+      </div>
+      <div id="tab-terrain" class="tab-panel">
+        <div class="terrain-grid" id="terrain-grid"></div>
+        <p class="hint">Terrain paints on the Terrain layer with automatic edges.</p>
+      </div>
+      <div id="tab-tiles" class="tab-panel" hidden>
+        <select id="tileset-select" aria-label="Tile sheet"></select>
+        <div class="sheet-scroll"><canvas id="sheet-canvas"></canvas></div>
+        <p class="hint">Drag across the sheet to pick several tiles (a house, a tree) as one stamp.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Map</h2>
+      <label class="row">Base terrain
+        <select id="base-select"></select>
+      </label>
+      <label class="row"><input type="checkbox" id="show-grid" checked> Show grid</label>
+      <label class="row"><input type="checkbox" id="show-regions" checked> Show regions</label>
+      <button id="btn-autocollision" title="Mark water, holes and lava as blocked">Auto collision</button>
+      <p class="hint"><a href="assets/CREDITS.md" target="_blank" rel="noopener">Tile credits</a> — required when you use these tiles.</p>
+    </section>
+  </aside>
+
+  <main class="stage" id="stage">
+    <canvas id="view"></canvas>
+  </main>
+
+  <footer class="status" id="status">Loading tiles…</footer>
+
+  <dialog id="dlg-new">
+    <form method="dialog">
+      <h2>New map</h2>
+      <label class="row">Width (tiles) <input id="new-w" type="number" min="4" max="512" value="40" required></label>
+      <label class="row">Height (tiles) <input id="new-h" type="number" min="4" max="512" value="30" required></label>
+      <label class="row">Base terrain <select id="new-base"></select></label>
+      <menu>
+        <button value="cancel" formnovalidate>Cancel</button>
+        <button value="ok" class="primary">Create</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <input type="file" id="file-open" accept=".json,application/json" hidden>
+  <input type="file" id="file-import" accept=".tmj,.json,.png,image/png" multiple hidden>
+
+  <script type="module" src="src/editor.js"></script>
+</body>
+</html>
