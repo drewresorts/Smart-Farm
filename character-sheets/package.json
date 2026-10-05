@@ -8,7 +8,8 @@
     "export": "node export-lpc.mjs",
     "build": "node build-sheets.mjs",
     "all": "node export-lpc.mjs && node build-sheets.mjs",
-    "serve": "node serve.mjs 8091"
+    "serve": "node serve.mjs 8091",
+    "sequences": "node export-sequences.mjs"
   },
   "dependencies": {
     "playwright": "^1.56.0",

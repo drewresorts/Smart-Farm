@@ -14,6 +14,11 @@ built from Universal LPC art by the bundled
 - `preview/contact.png`: key frames of every character, one row each.
 - `viewer.html`: animated preview of any animation for the whole cast. Run
   `npm run serve`, then open http://localhost:8091.
+- `npm run sequences` writes one file per animation into
+  `sequences/<id>/`. Each animation comes as a transparent PNG strip, an SVG
+  strip made of crisp pixel rectangles that scales without blurring, and a
+  PNG per frame in `frames/`. The output isn't committed because it is about
+  9,600 files.
 
 ![Contact sheet](preview/contact.png)
 
