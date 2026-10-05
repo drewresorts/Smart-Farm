@@ -1,0 +1,3 @@
+node_modules/
+# Intermediate 64px LPC exports (rebuild with `npm run export`)
+lpc/

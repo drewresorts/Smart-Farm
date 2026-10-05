@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <title>Character Sheets</title>
+  <style>
+    :root { --bg: #f4f2ec; --card: #fff; --text: #2b2a27; --muted: #6b675e; --border: #d9d4c7; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #1f1e1b; --card: #2a2925; --text: #ece9e1; --muted: #a8a397; --border: #45423a; } }
+    body { margin: 0; padding: 16px; font: 14px/1.4 system-ui, sans-serif; background: var(--bg); color: var(--text); }
+    header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+    h1 { font-size: 18px; margin: 0 12px 0 0; }
+    select, label { font: inherit; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px; }
+    .card h2 { font-size: 13px; margin: 0; font-family: ui-monospace, monospace; }
+    .card p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+    .card .tags { color: var(--muted); font-size: 11px; margin-top: 4px; }
+    canvas { display: block; margin: 6px auto; image-rendering: pixelated; background: repeating-conic-gradient(#c8c8c8 0 25%, #e6e6e6 0 50%) 0 0 / 12px 12px; border-radius: 6px; }
+    .warn { color: #b25e00; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Character Sheets</h1>
+    <label>Animation <select id="anim"></select></label>
+    <label>Group <select id="group"><option value="">All</option><option>player</option><option>boss</option><option>npc</option></select></label>
+    <label>Speed <select id="fps"><option>4</option><option selected>8</option><option>12</option></select> fps</label>
+    <label><input type="checkbox" id="mirror"> Mirror (face left)</label>
+  </header>
+  <div class="grid" id="grid"></div>
+  <script type="module">
+    const manifest = await (await fetch("sheets/manifest.json")).json();
+    const $ = (id) => document.getElementById(id);
+    const SCALE = 3;
+    const anims = manifest.animations;
+    $("anim").innerHTML = Object.keys(anims).map((a) => `<option>${a}</option>`).join("");
+    $("anim").value = "walk_front";
+    const images = {};
+    await Promise.all(manifest.characters.map((c) => new Promise((res) => {
+      const img = new Image();
+      img.onload = res;
+      img.src = `sheets/${c.file}`;
+      images[c.id] = img;
+    })));
+
+    function render() {
+      const group = $("group").value;
+      $("grid").innerHTML = "";
+      for (const c of manifest.characters.filter((c) => !group || c.group === group)) {
+        const card = document.createElement("div");
+        card.className = "card";
+        const a = $("anim").value;
+        const note = c.fallbacks.includes(a) ? `<div class="warn">Stand-in frames for this animation</div>` : "";
+        card.innerHTML = `<h2>${c.id}</h2><canvas width="${48 * SCALE}" height="${48 * SCALE}"></canvas>
+          <p>${c.description}</p><div class="tags">${c.archetypes.join(", ")}</div>${note}`;
+        card.canvas = card.querySelector("canvas");
+        card.char = c;
+        $("grid").append(card);
+      }
+    }
+
+    let tick = 0;
+    function draw() {
+      const a = anims[$("anim").value];
+      const mirror = $("mirror").checked;
+      for (const card of $("grid").children) {
+        const ctx = card.canvas.getContext("2d");
+        ctx.imageSmoothingEnabled = false;
+        ctx.clearRect(0, 0, card.canvas.width, card.canvas.height);
+        const frame = a.start + (tick % a.count);
+        ctx.save();
+        if (mirror) { ctx.translate(card.canvas.width, 0); ctx.scale(-1, 1); }
+        ctx.drawImage(images[card.char.id], frame * 48, a.row * 48, 48, 48, 0, 0, 48 * SCALE, 48 * SCALE);
+        ctx.restore();
+      }
+    }
+
+    for (const id of ["anim", "group"]) $(id).onchange = () => { render(); draw(); };
+    $("mirror").onchange = draw;
+    let timer;
+    const start = () => { clearInterval(timer); timer = setInterval(() => { tick++; draw(); }, 1000 / Number($("fps").value)); };
+    $("fps").onchange = start;
+    render();
+    draw();
+    start();
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "smart-farm-character-sheets",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Builds 48x48 game character sheets from the Universal LPC character generator",
+  "scripts": {
+    "export": "node export-lpc.mjs",
+    "build": "node build-sheets.mjs",
+    "all": "node export-lpc.mjs && node build-sheets.mjs",
+    "serve": "node serve.mjs 8091"
+  },
+  "dependencies": {
+    "playwright": "^1.56.0",
+    "sharp": "^0.33.5"
+  }
+}
